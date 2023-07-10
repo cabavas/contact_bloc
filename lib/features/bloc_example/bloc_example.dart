@@ -13,6 +13,12 @@ class BlocExample extends StatelessWidget {
         title: const Text('Bloc Example'),
       ),
       body: BlocListener(
+        listenWhen: (previous, current) {
+          if(previous is ExampleStateInitial && current is ExampleStateData) {
+            return current.names.length > 6;
+          }
+          return false;
+        },
         listener: (context, state) {
           if (state is ExampleStateData) {
             ScaffoldMessenger.of(context).showSnackBar(

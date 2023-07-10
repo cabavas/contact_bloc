@@ -14,7 +14,7 @@ class BlocExample extends StatelessWidget {
       ),
       body: BlocListener(
         listenWhen: (previous, current) {
-          if(previous is ExampleStateInitial && current is ExampleStateData) {
+          if (previous is ExampleStateInitial && current is ExampleStateData) {
             return current.names.length > 6;
           }
           return false;
@@ -61,8 +61,8 @@ class BlocExample extends StatelessWidget {
             ),
 
             BlocSelector<ExampleBloc, ExampleState, List<String>>(
-              selector: (state){
-                if(state is ExampleStateData) {
+              selector: (state) {
+                if (state is ExampleStateData) {
                   return state.names;
                 }
                 return [];
@@ -73,6 +73,11 @@ class BlocExample extends StatelessWidget {
                   itemBuilder: (context, index) {
                     final name = names[index];
                     return ListTile(
+                      onTap: () {
+                        context.read<ExampleBloc>().add(
+                              ExampleRemoveNameEvent(name: name),
+                            );
+                      },
                       title: Text(name),
                     );
                   },

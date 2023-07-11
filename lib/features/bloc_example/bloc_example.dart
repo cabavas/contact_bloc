@@ -32,7 +32,8 @@ class BlocExample extends StatelessWidget {
           children: [
             BlocConsumer<ExampleBloc, ExampleState>(
               buildWhen: (previous, current) {
-                if(previous is ExampleStateInitial && current is ExampleStateData) {
+                if (previous is ExampleStateInitial &&
+                    current is ExampleStateData) {
                   return current.names.length > 3;
                 }
                 return false;
@@ -108,6 +109,16 @@ class BlocExample extends StatelessWidget {
             //     return const SizedBox.shrink();
             //   },
             // ),
+            IconButton(
+              onPressed: () {
+                context.read<ExampleBloc>().add(
+                      ExampleAddNameEvent(),
+                    );
+              },
+              icon: const Icon(Icons.add),
+              iconSize: 18,
+              color: Colors.blue,
+            ),
           ],
         ),
       ),

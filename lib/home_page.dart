@@ -18,7 +18,7 @@ class HomePage extends StatelessWidget {
             children: [
               Button(route: '/bloc/example/', text: 'Example'),
               Button(route: '/bloc/example/freezed', text: 'Example Freezed'),
-              Button(route: '/bloc/example/', text: 'Contact'),
+              Button(route: '/contacts/list', text: 'Contact'),
               Button(route: '/bloc/example/', text: 'Contact Cubit'),
             ],
           ),

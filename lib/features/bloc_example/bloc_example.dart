@@ -12,7 +12,7 @@ class BlocExample extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Bloc Example'),
       ),
-      body: BlocListener(
+      body: BlocListener<ExampleBloc, ExampleState>(
         listenWhen: (previous, current) {
           if (previous is ExampleStateInitial && current is ExampleStateData) {
             return current.names.length > 6;
@@ -50,8 +50,8 @@ class BlocExample extends StatelessWidget {
               },
               builder: (context, showLoader) {
                 if (showLoader) {
-                  return const Center(
-                    child: Expanded(
+                  return const Expanded(
+                    child: Center(
                       child: CircularProgressIndicator(),
                     ),
                   );
@@ -69,6 +69,7 @@ class BlocExample extends StatelessWidget {
               },
               builder: (context, names) {
                 return ListView.builder(
+                  shrinkWrap: true,
                   itemCount: names.length,
                   itemBuilder: (context, index) {
                     final name = names[index];

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'button/button.dart';
+
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
@@ -9,29 +11,15 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Home Page'),
       ),
-      body: SingleChildScrollView(
+      body: const SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.all(8),
-          child: Wrap(
+          padding: EdgeInsets.all(30),
+          child: Wrap(spacing: 20,runSpacing: 20,
             children: [
-              TextButton(
-                onPressed: () {
-                  Navigator.of(context).pushNamed('/bloc/example/');
-                },
-                child: const Text('Example'),
-              ),
-              TextButton(
-                onPressed: () {},
-                child: const Text('Example Freezed'),
-              ),
-              TextButton(
-                onPressed: () {},
-                child: const Text('Contact'),
-              ),
-              TextButton(
-                onPressed: () {},
-                child: const Text('Contact Cubit'),
-              ),
+              Button(route: '/bloc/example/', text: 'Example'),
+              Button(route: '/bloc/example/', text: 'Example Freezed'),
+              Button(route: '/bloc/example/', text: 'Contact'),
+              Button(route: '/bloc/example/', text: 'Contact Cubit'),
             ],
           ),
         ),

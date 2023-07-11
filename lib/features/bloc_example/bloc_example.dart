@@ -15,7 +15,7 @@ class BlocExample extends StatelessWidget {
       body: BlocListener<ExampleBloc, ExampleState>(
         listenWhen: (previous, current) {
           if (previous is ExampleStateInitial && current is ExampleStateData) {
-            return current.names.length > 6;
+            return current.names.length > 3;
           }
           return false;
         },
@@ -31,6 +31,12 @@ class BlocExample extends StatelessWidget {
         child: Column(
           children: [
             BlocConsumer<ExampleBloc, ExampleState>(
+              buildWhen: (previous, current) {
+                if(previous is ExampleStateInitial && current is ExampleStateData) {
+                  return current.names.length > 3;
+                }
+                return false;
+              },
               listener: (context, state) {
                 print('Estado alterado para ${state.runtimeType}');
               },

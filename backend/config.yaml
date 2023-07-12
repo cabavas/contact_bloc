@@ -1,5 +1,6 @@
 name: Test
 port: 3031
+host: 127.0.0.1
 db: db.json
 statics: public/
 

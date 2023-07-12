@@ -10,7 +10,7 @@ part 'contact_list_event.dart';
 part 'contact_list_state.dart';
 
 class ContactListBloc extends Bloc<ContactListEvent, ContactListState> {
-  ContactsRepository _repository;
+  final ContactsRepository _repository;
 
   ContactListBloc({required ContactsRepository repository})
       : _repository = repository,
